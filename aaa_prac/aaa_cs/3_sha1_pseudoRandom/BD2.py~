@@ -1,0 +1,21 @@
+import random
+import hashlib
+
+
+shared_private_key = repr(random.random())
+
+def create_signature(data):
+    return hashlib.sha1(repr(data) + "," + shared_private_key).hexdigest()
+
+def verify_signature(data, signature):
+    return signature == create_signature(data)
+
+
+if __name__ = '__main__':
+
+	data = raw_input()
+
+	hashed_data = create_signature(data)
+
+	print(hashed_data)
+
